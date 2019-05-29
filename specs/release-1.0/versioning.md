@@ -12,7 +12,7 @@
 6. User may allow authomatic mode for dependency management based on public test and audit results or he manages particular dependencies in manually.
  
 ## Requirments:
-2. For user script the version should be denoted by `PublicName` decorator.
+1. For user script the version should be denoted by `PublicName` decorator.
 ```typescript
     @PublicName("CommonLib.dapplet-base.eth","1.1.0-alfa+10")
     class TwitterFeature implements ITwitterFeature {
@@ -26,11 +26,11 @@ or
     ...
     }
 ```
-3.  A `package.json` evaluates dependency versions at design-time. A `@Load` evaluates dependency information at runtime (time of loading and dynamic linking). In some cases dependency version information may be transfered from `package.json` to `@Load` decorator automatically as part of build process. 
+2.  A `package.json` evaluates dependency versions at design-time. A `@Load` evaluates dependency information at runtime (time of loading and dynamic linking). In some cases dependency version information may be transfered from `package.json` to `@Load` decorator automatically as part of build process. 
 ToDo for later releases. (`Milestone >1.0`).
  
-4.  An npm [semver module](https://www.npmjs.com/package/semver) should be used in the extension's background service as an implementation of version management.
-5. An `@Load` injector may supply a `semver range expression` as defined by [semver](https://www.npmjs.com/package/semver#ranges), defining a compatible dependency vesions as designed by developer. 
+3.  An npm [semver module](https://www.npmjs.com/package/semver) should be used in the extension's background service as an implementation of version management.
+4. An `@Load` injector may supply a `semver range expression` as defined by [semver](https://www.npmjs.com/package/semver#ranges), defining a compatible dependency vesions as designed by developer. 
 ```typescript
     @Load("CommonLib","~v1.1.0")
     public library : any;
@@ -40,6 +40,6 @@ or
     @Load({name:"CommonLib",version:"~v1.1.0"})
     public library : any;
 ```
-5. A dependency version gets "locked" at the time of deployment, like "package-lock.json" and reflects actually audited and then deployed version. A dependency "upgrade" to newer version (even inside the valid range) is a subject of separate audit and approval workflow, which may be authomatic or manual depending on user settings. 
+4. A dependency version gets "locked" at the time of deployment, like "package-lock.json" and reflects actually audited and then deployed version. A dependency "upgrade" to newer version (even inside the valid range) is a subject of separate audit and approval workflow, which may be authomatic or manual depending on user settings. 
 
-6. There will be a dependency optimizer, calculating most appropriate set of dependency versions for given set. (`Milestone >1.0`) 
+5. There will be a dependency optimizer, calculating most appropriate set of dependency versions for given set. (`Milestone >1.0`) 
